@@ -17,6 +17,7 @@ Date de remise : 10 novembre 2023 avant 23h59
 #include <string> // lib pour variable string
 #include <math.h> // lib pour les fonctions mathematique
 #include <sstream> // lib pour string to int
+#include "source.h"
 using namespace std; // utiliser l'espace de noms standard
 
 // Fonction de verificateur d'entier
@@ -41,15 +42,68 @@ restartVerif:
 }
 
 
+// Question 1
+// programme qui renvoie le nombre de jour qu'il y a dans un mois
+void partie1() {
 
+}
 
+// Question 2
+// programme qui renvoie les puissances de 2 comprises entre 1 et 32 000
+// sous le format : 2^x = y
+void partie2() {
 
+}
+
+// Question 3
+// programme qui renvoie la moyenne, le min et le max de 5 entiers
+void partie3() {
+
+}
+
+// Question 4
+// programme qui trouve les nbr 1er entre 50 et 100
+// répondre aux questions : 
+// Quelles structures répétitives devrait-on choisir ?
+// et Pourquoi ?
+void partie4() {
+
+}
+
+// Question 5
+// programme qui renvoie les impots preleves
+// 5% pour la premiere tranche de 10k $
+// 15% le reste
+void partie5() {
+
+}
+
+// Question 8
+// programme qui fait deviner un nombre aleatoire compris dans [0;50]
+void partie8() {
+
+}
+
+// Question 11
+// programme qui renvoie les titres des livres de l'année A rentre par l'utilisateur
+// en fonction de donnees extraites d'un fichier .dat
+void partie11() {
+
+}
+
+// Question 13
+// programme qui calcule le perimetre d'un polygone donne
+// en fonction de coordonnee de points donnees dans un fichier .dat
+void partie13() {
+
+}
 
 
 
 // Fonction principale
 int main()
 {
+
 	// Introduction du TP
 	cout << " /$$$$$$$$ /$$$$$$$    /$$$$$      /$$$$$$$                   /$$$$$$                  " << endl;
 	cout << "|__  $$__/| $$__  $$ /$$__  $$    | $$__  $$                 /$$__  $$ /$$       /$$   " << endl;
@@ -67,7 +121,8 @@ int main()
 	//Partie Déclaration de variable
 	string stringChoixPartie;
 	int intChoixPartie;
-
+	bool exercice = true;
+	
 	//Partie Instruction
 	do{
 		stringChoixPartie = "Veuillez choisir l'une des parties du TP en fonction de la question ou 0 pour arreter la lecture des questions :";
@@ -76,7 +131,8 @@ int main()
 		switch (intChoixPartie) {
 		case 0:
 			cout << "Arret de la lecture des questions." << endl;
-			goto exitLoop;
+			exercice = !exercice;
+			break;
 		case 1:
 			cout << "Partie 1 :" << endl;
 			partie1();
@@ -99,19 +155,18 @@ int main()
 			break;
 		case 8:
 			cout << "Partie  :" << endl;
-			partie6();
+			partie8();
 			break;
 		case 11:
 			cout << "Partie 11 :" << endl;
-			partie7();
+			partie11();
 			break;
-		}
 		case 13:
 			cout << "Partie 13 :" << endl;
-			partie7();
+			partie13();
 			break;
 		}
-	} while (true);
-	exitLoop:;
+	} while (exercice);
+
 	return 0;
 }
