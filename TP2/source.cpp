@@ -70,7 +70,7 @@ void partie2() {
 }
 
 // Question 3
-// programme qui renvoie la moyenne, le min et le max de 5 entiers
+// programme qui renvoie la moyenne, le min et le max de 5 entiers entre par l'utilisateur
 void partie3() {
 
 }
