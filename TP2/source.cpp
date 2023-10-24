@@ -17,7 +17,8 @@ Date de remise : 10 novembre 2023 avant 23h59
 #include <string> // lib pour variable string
 #include <math.h> // lib pour les fonctions mathematique
 #include <sstream> // lib pour string to int
-#include "source.h"
+#include <time.h> // lib pour manipuler des dates et heures = ctime
+#include <fstream> // lib pour manipuler des fichiers
 using namespace std; // utiliser l'espace de noms standard
 
 // Fonction de verificateur d'entier
@@ -27,7 +28,7 @@ int intVerificator(string str) {
 	stringstream ss;
 	int x;
 
-restartVerif:
+	restartVerif: //goto
 	for (int i = 0; i < str.size() - 1; i++) {
 		if (isdigit(str[i]) == false) {
 			cout << "Ce n'est pas un entier." << endl;
@@ -45,7 +46,20 @@ restartVerif:
 // Question 1
 // programme qui renvoie le nombre de jour qu'il y a dans un mois
 void partie1() {
+	const int nbMois = 12;
+	string nomMois[nbMois] = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"};
+	int nbJourInMois[nbMois] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	string numeroMoisString;
 
+	cout << "user give me :";
+	cin >> numeroMoisString;
+	/* todo
+	* verifier qu'il est dans [1;12]
+	* verifier que c'etait bien comme ca que j'avais ecrit la verification de int
+	*/
+	int numeroMois = intVerificator(numeroMoisString);
+	cout << "Pour le mois numero " << numeroMoisString << " qui correspond au mois de " << nomMois[numeroMois - 1] <<
+		", ce mois est de " << nbJourInMois[numeroMois - 1] << " jours." << endl;
 }
 
 // Question 2
@@ -154,7 +168,7 @@ int main()
 			partie5();
 			break;
 		case 8:
-			cout << "Partie  :" << endl;
+			cout << "Partie 8 :" << endl;
 			partie8();
 			break;
 		case 11:
