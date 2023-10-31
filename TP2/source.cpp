@@ -47,11 +47,12 @@ int intVerificator(string str) {
 // programme qui renvoie le nombre de jour qu'il y a dans un mois
 void partie1() {
 	const int nbMois = 12;
-	string nomMois[nbMois] = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"};
+	string nomMois[nbMois] = {"Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre"};
 	int nbJourInMois[nbMois] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	
 	string numeroMoisString;
 
-	cout << "user give me :";
+	cout << "Veuillez entrer le numero d'un mois pour connaitre le nombre de jour dans ce dernier :";
 	cin >> numeroMoisString;
 	/* todo
 	* verifier qu'il est dans [1;12]
@@ -71,8 +72,46 @@ void partie2() {
 
 // Question 3
 // programme qui renvoie la moyenne, le min et le max de 5 entiers entre par l'utilisateur
+float moyenne(int tableau[5], int size) {
+	float somme = 0;
+	cout << size;
+	for (int i = 0; i < size; i++) {
+		somme += tableau[i];
+	}
+	return somme / size;
+}
+int minimum(int tableau[5], int size) {
+	int minimum = tableau[0];
+	for (int i = 0; i < size; i++) {
+		if (minimum > tableau[i]) {
+			minimum = tableau[i];
+		}
+	}
+	return minimum;
+}
+int maximum(int tableau[5], int size) {
+	int maximum= tableau[0];
+	for (int i = 0; i < size; i++) {
+		if (maximum < tableau[i]) {
+			maximum = tableau[i];
+		}
+	}
+	return maximum;
+}
 void partie3() {
+	string entierString;
+	int entierTableau[5];
+	int size = sizeof(entierTableau) / sizeof(entierTableau[0]);
 
+	for (int i = 0; i < size; i++) {
+		cout << "Veuillez entrer un entier : ";
+		cin >> entierString;
+		entierTableau[i] = intVerificator(entierString);
+		cout << endl;
+	}
+	cout << "La moyenne de ces 5 entiers est " << moyenne(entierTableau, size) << endl;
+	cout << "La valeur minimal de ces 5 entiers est " << minimum(entierTableau, size) << endl;
+	cout << "La valeur maximal de ces 5 entiers est " << maximum(entierTableau, size) << endl;
 }
 
 // Question 4
