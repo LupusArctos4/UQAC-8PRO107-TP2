@@ -107,7 +107,6 @@ void partie3() {
 		cout << "Veuillez entrer un entier : ";
 		cin >> entierString;
 		entierTableau[i] = intVerificator(entierString);
-		cout << endl;
 	}
 	cout << "La moyenne de ces 5 entiers est " << moyenne(entierTableau, size) << endl;
 	cout << "La valeur minimal de ces 5 entiers est " << minimum(entierTableau, size) << endl;
@@ -128,7 +127,22 @@ void partie4() {
 // 5% pour la premiere tranche de 10k $
 // 15% le reste
 void partie5() {
-
+	float revenuFloat, impots5, impots15;
+	
+	cout << "Veuillez entrer votre revenu annuel afin de pouvoir calculer l'impot que vous devez payer : ";
+	cin >> revenuFloat;
+	impots5 = revenuFloat * 0.05;
+	if (revenuFloat > 10000) {
+		revenuFloat -= 10000;
+		impots15 = revenuFloat * 0.15;
+		cout << "Vous allez payer " << impots5 << "$ pour la premiere tranche de 10k$ ";
+		cout << "et " << impots15 << "$ pour le reste." << endl;
+		cout << "Soit un total de " << impots5 + impots15 << "$.";
+	}
+	else
+	{
+		cout << "Vous allez payer " << impots5 << " d'impots";
+	}
 }
 
 // Question 8
