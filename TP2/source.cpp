@@ -67,7 +67,36 @@ void partie1() {
 // programme qui renvoie les puissances de 2 comprises entre 1 et 32 000
 // sous le format : 2^x = y
 void partie2() {
+	/*todo
+	*Voir si on peut aligner par rapport à la fin plutôt que le début
+	*/
+	int indexMax = 0;
+	double tabResults[100];
+	int i = -1;
 
+	//On calcule d'abord les puissances de 2 jusqu'à obtenir une valeur supérieure à 32 000
+	do
+	{
+		i++;
+		tabResults[i] = pow(2, i);
+	} while (tabResults[i] < 32000);
+
+	indexMax = i - 1;
+
+	//On affiche les résultats
+	for (int j = 0; j <= indexMax; j++)
+	{
+		//Cas d'un indice pair --> colonne de gauche
+		if (j % 2 == 0)
+		{
+			cout << "2^\t" << j << "\t=" << "\t" << tabResults[j];
+		}
+		//Cas d'un indice impair
+		else
+		{
+			cout << "\t2^\t" << j << "\t=" << "\t" << tabResults[j] << endl;
+		}
+	}
 }
 
 // Question 3
@@ -119,7 +148,27 @@ void partie3() {
 // Quelles structures répétitives devrait-on choisir ?
 // et Pourquoi ?
 void partie4() {
+	/*todo
+	* Voir pour éventuelement remplacer le for interne par un do while
+	*/
+	//On utilise 2 boucles for imbriquée, la principale pour tester les nombres de 50 à 100
+	//et la deuxième pour déterminer si le nombre testé est premier ou non
+	cout << "Les nombres premiers entre 50 et 100 sont : ";
+	for (int i = 50; i <= 100; i++)
+	{
+		bool nbreEstPremier = true;
+		for (int j = 2; j <= i / 2; j++) {
+			if (i % j == 0) {
+				nbreEstPremier = false;
+			}
+		}
 
+		if (nbreEstPremier)
+		{
+			cout << i << " ";
+		}
+	}
+	cout << endl;
 }
 
 // Question 5
@@ -148,7 +197,28 @@ void partie5() {
 // Question 8
 // programme qui fait deviner un nombre aleatoire compris dans [0;50]
 void partie8() {
-
+	srand(time(NULL));
+	int nbMystere = rand() % 51;
+	int nbSaisi = -1;
+	int nbTentatives = 1;
+	do
+	{
+		cout << "Saisissez un nombre entre 0 et 50 :" << endl;
+		cin >> nbSaisi;
+		if (nbSaisi < nbMystere)
+		{
+			cout << "C'est plus !" << endl;
+		}
+		else if (nbSaisi > nbMystere)
+		{
+			cout << "C'est moins !" << endl;
+		}
+		else
+		{
+			cout << "Vous avez trouve en " << nbTentatives << " essais !" << endl;
+		}
+		nbTentatives++;
+	} while (nbMystere != nbSaisi);
 }
 
 // Question 11
