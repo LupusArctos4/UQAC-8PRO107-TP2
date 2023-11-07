@@ -6,7 +6,7 @@
 //Created : 24/10/2023
 //Last update : 24/10/2023
 /*Description :
-TP N'1
+TP N'2
 Automne 2023
 Enseignante : Imene Benkalai
 Date de remise : 10 novembre 2023 avant 23h59
@@ -52,15 +52,19 @@ void partie1() {
 	
 	string numeroMoisString;
 
-	cout << "Veuillez entrer le numero d'un mois pour connaitre le nombre de jour dans ce dernier :";
+	cout << "Veuillez entrer le numero d'un mois pour connaitre le nombre de jour dans ce dernier : ";
 	cin >> numeroMoisString;
-	/* todo
-	* verifier qu'il est dans [1;12]
-	* verifier que c'etait bien comme ca que j'avais ecrit la verification de int
-	*/
+
 	int numeroMois = intVerificator(numeroMoisString);
-	cout << "Pour le mois numero " << numeroMoisString << " qui correspond au mois de " << nomMois[numeroMois - 1] <<
-		", ce mois est de " << nbJourInMois[numeroMois - 1] << " jours." << endl;
+
+	if (numeroMois > 12 || numeroMois < 1) {
+		cout << "Veuillez entrer un entier entre 1 et 12." << endl;
+		partie1();
+	}
+	else {
+		cout << "Pour le mois numero " << numeroMoisString << " qui correspond au mois de " << nomMois[numeroMois - 1] <<
+				", ce mois est de " << nbJourInMois[numeroMois - 1] << " jours." << endl;
+	}
 }
 
 // Question 2
@@ -103,7 +107,6 @@ void partie2() {
 // programme qui renvoie la moyenne, le min et le max de 5 entiers entre par l'utilisateur
 float moyenne(int tableau[5], int size) {
 	float somme = 0;
-	cout << size;
 	for (int i = 0; i < size; i++) {
 		somme += tableau[i];
 	}
@@ -225,14 +228,98 @@ void partie8() {
 // programme qui renvoie les titres des livres de l'année A rentre par l'utilisateur
 // en fonction de donnees extraites d'un fichier .dat
 void partie11() {
+	ifstream bookFile;
+	bookFile.open("Livres.dat.txt");
 
+	string titre;
+	float A, annee, pvente, pachat, prix, nbPages, nbachat, nbvente;
+	bool bonVendeur = false;
+
+	if (bookFile.fail())
+	{
+		cout << "Echec de l'ouverture du fichier Livres!" << endl;
+	}
+	else
+	{
+		cout << "Veuillez saisir l'annee: ";
+		cin >> A;
+
+		while (!bookFile.eof()) {
+			getline(bookFile, titre);
+			bookFile >> annee;
+			bookFile >> nbPages;
+			bookFile >> pachat;
+			bookFile >> pvente;
+			bookFile >> nbachat;
+			bookFile >> nbvente;
+			bookFile.ignore();
+		}
+		
+
+		if ((A == annee) && ((pvente * nbvente) - (pachat * nbachat)) >= 10000)
+		{
+			bonVendeur = true;
+		}
+		else
+		{
+			bonVendeur = false;
+		}
+		if (bonVendeur == true)
+		{
+			cout << "Le livre " << titre << " est bon vendeur" << endl;
+		}
+		else
+		{
+			cout << "Le livre n'est pas Bonvendeur" << endl;
+		}
+	}
+	bookFile.close();
 }
 
 // Question 13
 // programme qui calcule le perimetre d'un polygone donne
 // en fonction de coordonnee de points donnees dans un fichier .dat
 void partie13() {
+	ifstream polygoneFile;
+	polygoneFile.open("Polygone.dat.txt");
 
+	string A;
+	float P = 0, Xa, Ya, X, Y, X0, Y0;
+	bool premligne = true;
+
+	if (polygoneFile.fail())
+	{
+		cout << "Echec de l'ouverture du fichier Livres!" << endl;
+	}
+	else
+	{
+		while (!polygoneFile.eof())
+		{
+			polygoneFile >> A;
+			polygoneFile >> X;
+			polygoneFile >> Y;
+			cout << A << "		" << X << "		" << Y << endl;
+			if (premligne == true)
+			{
+				X0 = X;
+				Y0 = Y;
+				Xa = X;
+				Ya = Y;
+				premligne = false;
+			}
+			else
+			{
+				P += sqrt(pow((Xa - X), 2) + pow((Ya - Y), 2));
+				Xa = X;
+				Ya = Y;
+			}
+		}
+
+		P += sqrt(pow((X - X0), 2) + pow((Y - Y0), 2));
+
+		cout << "Le perimetre du polygone est: " << P;
+	}
+	polygoneFile.close();
 }
 
 
