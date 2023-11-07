@@ -252,7 +252,7 @@ int main()
 	cout << "   |__/   |__/      |________/    |_______/  \_______/       \______/                  \n\n\n" << endl;
 
 	cout << "Automne 2023 - Groupe 01" << endl;
-	cout << "Enseignante : Imène Benkalai" << endl;
+	cout << "Enseignante : Imene Benkalai" << endl;
 	cout << "Date de remise : 10 novembre 2023 avant 23h59" << endl;
 
 	//Partie Déclaration de variable
